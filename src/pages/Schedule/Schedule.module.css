@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-block-size: 100dvh;
+}
+
+.title {
+  margin: 0;
+  margin-block-start: 30px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #222;
+}

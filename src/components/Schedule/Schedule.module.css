@@ -1,0 +1,108 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 8px 14px;
+  outline: none;
+  background: #f9fafb;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  color: #374151;
+}
+
+.tab:hover {
+  border: 1px solid #e5e7eb;
+  background: #eef2f7;
+}
+
+/* активная вкладка — аккуратный синий */
+.activeTab {
+  outline-color: transparent;
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+  cursor: default;
+  outline: none;
+  box-shadow: none;
+}
+
+.tab:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.tab.activeTab:hover {
+  background: #2563eb;
+}
+
+.dayContent {
+  display: flex;
+  gap: 20px;
+}
+
+.classBlock {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.classTitle {
+  margin: 0;
+  font-weight: 600;
+  color: #111827;
+}
+
+.lessonList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lessonItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 14px;
+  color: #4b5563;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.lessonItem:last-child {
+  border-bottom: none;
+}
+
+.lessonNumber {
+  padding: 0;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.classHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 15px;
+}
+
+.cabinet {
+  font-size: 13px;
+  color: #4b5563;
+  background: #f3f4f6;
+  padding: 4px 10px;
+  border-radius: 8px;
+}

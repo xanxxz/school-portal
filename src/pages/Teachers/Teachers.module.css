@@ -1,0 +1,11 @@
+.wrapper {
+  min-block-size: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  font-size: 28px;
+  margin-block-start: 30px;
+}

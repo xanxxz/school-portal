@@ -1,0 +1,16 @@
+.wrapper {
+  min-block-size: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  margin: 0;
+  margin-block-start: 30px;
+  font-size: 28px;
+}
+
+.text {
+  font-size: 18px;
+}

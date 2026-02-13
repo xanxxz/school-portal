@@ -1,0 +1,207 @@
+img, h2, p {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  margin-block-start: 30px;
+  padding-inline: 25px;
+}
+
+.topBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center
+}
+
+.titleBox {
+  inline-size: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
+.title {
+  color: #2563eb;
+  font-size: 24px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 20px;
+}
+
+.imgBox {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.img {
+  inline-size: 50%;
+  border-radius: 12px;
+}
+
+.textBox {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  inline-size: 500px;
+  justify-content: space-around
+}
+
+.text {
+  font-size: 16px;
+  line-height: 28px;
+}
+
+span {
+  padding-inline-start: 30px;
+}
+
+.two {
+  background-color: #dadada;
+  padding: 16px 24px;
+  border-radius: 8px;
+  inline-size: 400px;
+}
+
+.problem {
+  margin-block: 50px;
+  inline-size: 100%;
+  display: flex;
+  
+}
+
+.problem img {
+  border-radius: 6px;
+}
+
+.div {
+  background: linear-gradient(to top, #60a5fa, #2563eb);
+  border-radius: 6px;
+  padding: 16px 24px;
+  color: #fff;
+  font-size: 24px;
+}
+
+.div .button {
+  background-color: #fff;
+  color: #1e1e1e;
+  font-size: 18px;
+  border: none;
+  transition: 0.2s;
+}
+
+.div .button:hover {
+  opacity: .8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+}
+
+.imgGos {
+  margin-block-end: 50px;
+  display: flex;
+}
+
+.imgGos img{
+  inline-size: 100%;
+}
+
+.imgGosBox img{
+  inline-size: 100%;
+}
+
+img {
+  pointer-events: none;
+}
+
+a img {
+  pointer-events: all
+}
+
+@media (max-width: 1024px) {
+  .titleBox,
+  .textBox {
+    inline-size: 100%;
+    overflow: hidden;
+  }
+
+  .two {
+    inline-size: 100%;
+  }
+
+  .img {
+    inline-size: 100%;
+  }
+
+  .imgBox {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding-inline: 16px;
+  }
+
+  .two {
+    inline-size: 100%;
+    padding: 4px 8px;
+  }
+
+  .title {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .text {
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .problem {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .div {
+    font-size: 18px;
+    padding: 14px 18px;
+  }
+
+  .div button {
+    font-size: 16px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding-inline: 12px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+
+  .text {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  span {
+    padding-inline-start: 16px;
+  }
+}
