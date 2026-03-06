@@ -8,9 +8,18 @@ interface PdfItem {
 
 interface PdfListProps {
   files: PdfItem[];
+  onDelete?: (id: number) => void;
 }
 
-export default function PdfList({ files }: PdfListProps) {
+export default function PdfList({ files, onDelete }: PdfListProps) {
+  const token = localStorage.getItem("token");
+
+  const handleDelete = (id: number) => {
+    if (!token || token !== "admin") return;
+    if (!window.confirm("Вы уверены, что хотите удалить этот файл?")) return;
+    if (onDelete) onDelete(id);
+  };
+
   return (
     <div className={styles.wrapper}>
       <ul className={styles.list}>
@@ -24,6 +33,11 @@ export default function PdfList({ files }: PdfListProps) {
               <a href={file.url} download className={styles.link}>
                 Скачать
               </a>
+              {token === "admin" && (
+                <button onClick={() => handleDelete(file.id)} className={styles.deleteBtn}>
+                  Удалить
+                </button>
+              )}
             </div>
           </li>
         ))}

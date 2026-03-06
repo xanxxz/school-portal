@@ -3,10 +3,16 @@ import styles from './Teachers.module.css';
 import { getTeachers, type TeacherData } from '../../api/teachers';
 import TeacherCardList from '../../components/TeacherCardList/TeacherCardList';
 import Loader from '../../components/Loader/Loader';
+import AddTeacher from '../../components/AddTeacher/AddTeacher';
 
 export default function Teachers() {
   const [teachers, setTeachers] = useState<TeacherData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [token, setToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    setToken(localStorage.getItem('token'));
+  }, []);
 
   useEffect(() => {
     getTeachers()
@@ -23,6 +29,11 @@ export default function Teachers() {
           <Loader size={80} />
         ) : (
           <TeacherCardList teachers={teachers} />
+        )}
+      </div>
+      <div className={styles.addNewsSection}>
+        {localStorage.getItem('token') === 'admin' && (
+          <AddTeacher />
         )}
       </div>
     </div>

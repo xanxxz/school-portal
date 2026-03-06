@@ -34,6 +34,31 @@ h1 {
   margin: 0;
 }
 
+.nav .authBtn {
+  background-color: blur(0.5);
+  color: white;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.authBtnC {
+  padding: 0;
+  margin-left: 12px;
+  text-decoration: none;
+  font-size: 14px;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom .2s linear;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.authBtnC:hover {
+  border-bottom: 1px solid white;
+  transition: border-bottom .2s linear;
+}
+
 @media (max-width: 1024px) {
   .header {
     padding: 20px;

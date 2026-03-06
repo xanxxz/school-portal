@@ -1,12 +1,27 @@
 import React from 'react';
 import styles from './TeacherCard.module.css';
-import type { TeacherData } from '../../api/teachers';
+import { deleteTeacher, type TeacherData } from '../../api/teachers';
 
 interface TeacherCardProps {
   data: TeacherData;
+  onDelete?: (id: number) => void;
 }
 
-export default function TeacherCard({ data }: TeacherCardProps) {
+export default function TeacherCard({ data, onDelete }: TeacherCardProps) {
+  const token = localStorage.getItem("token");
+
+  const handleDelete = async () => {
+    if (!token) return alert("Нет доступа");
+    if (!window.confirm("Вы уверены, что хотите удалить эту новость?")) return;
+
+    try {
+      await deleteTeacher(data.id, token);
+      if (onDelete) onDelete(data.id);
+    } catch (err: any) {
+      alert(err.message || "Ошибка удаления");
+    }
+  };
+
   return (
     <div className={styles.card}>
       {data.photoUrl && <img src={data.photoUrl} alt={data.name} className={styles.photo} />}
@@ -20,6 +35,11 @@ export default function TeacherCard({ data }: TeacherCardProps) {
               <span key={idx} className={styles.subject}>{subj}</span>
             ))}
           </div>
+        )}
+        {token === "admin" && (
+          <button onClick={handleDelete} className={styles.deleteBtn}>
+            Удалить
+          </button>
         )}
       </div>
     </div>

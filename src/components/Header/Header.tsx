@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 
-export default function Header() {
+interface HeaderProps {
+  token: string | null;
+  onLogout: () => void;
+}
+
+export default function Header({ token, onLogout }: HeaderProps) {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -15,6 +20,15 @@ export default function Header() {
           <Link to="/feedback">Обратная связь</Link>
           <Link to="/gallery">Галерея</Link>
           <Link to="/organization">О школе</Link>
+          {token ? (
+            <button onClick={onLogout} className={styles.authBtnC}>
+              Выйти
+            </button>
+          ) : (
+            <Link to="/login" className={styles.authBtn}>
+              Войти
+            </Link>
+          )}
         </nav>
       </div>
     </header>

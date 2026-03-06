@@ -46,3 +46,19 @@
 .link:hover {
   text-decoration: underline;
 }
+
+.deleteBtn {
+  margin-left: 10px;
+  padding: 4px 8px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background-color 0.2s;
+}
+
+.deleteBtn:hover {
+  background-color: #c9302c;
+}
