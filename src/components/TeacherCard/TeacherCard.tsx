@@ -12,7 +12,6 @@ export default function TeacherCard({ data, onDelete }: TeacherCardProps) {
 
   const handleDelete = async () => {
     if (!token) return alert("Нет доступа");
-    if (!window.confirm("Вы уверены, что хотите удалить эту новость?")) return;
 
     try {
       await deleteTeacher(data.id, token);

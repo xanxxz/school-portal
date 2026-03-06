@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './Teachers.module.css';
-import { getTeachers, type TeacherData } from '../../api/teachers';
+import { getTeachers, type TeacherData, deleteTeacher } from '../../api/teachers';
 import TeacherCardList from '../../components/TeacherCardList/TeacherCardList';
 import Loader from '../../components/Loader/Loader';
 import AddTeacher from '../../components/AddTeacher/AddTeacher';
@@ -8,18 +8,29 @@ import AddTeacher from '../../components/AddTeacher/AddTeacher';
 export default function Teachers() {
   const [teachers, setTeachers] = useState<TeacherData[]>([]);
   const [loading, setLoading] = useState(true);
-  const [token, setToken] = useState<string | null>(null);
-
-  useEffect(() => {
-    setToken(localStorage.getItem('token'));
-  }, []);
 
   useEffect(() => {
     getTeachers()
-      .then((data: TeacherData[]) => setTeachers(data))
+      .then(setTeachers)
       .catch(console.error)
       .finally(() => setLoading(false));
   }, []);
+
+  const handleAddTeacher = (newTeacher: TeacherData) => {
+    setTeachers(prev => [newTeacher, ...prev]);
+  };
+
+  const handleDeleteTeacher = async (id: number) => {
+    const token = localStorage.getItem('token');
+    if (!token) return;
+
+    try {
+      await deleteTeacher(id, token);
+      setTeachers(prev => prev.filter(t => t.id !== id));
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -28,14 +39,12 @@ export default function Teachers() {
         {loading ? (
           <Loader size={80} />
         ) : (
-          <TeacherCardList teachers={teachers} />
+          <TeacherCardList teachers={teachers} onDelete={handleDeleteTeacher} />
         )}
       </div>
-      <div className={styles.addNewsSection}>
-        {localStorage.getItem('token') === 'admin' && (
-          <AddTeacher />
-        )}
-      </div>
+      {localStorage.getItem('token') === 'admin' && (
+        <AddTeacher onAddTeacher={handleAddTeacher} />
+      )}
     </div>
   );
 }

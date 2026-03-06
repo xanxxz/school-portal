@@ -24,7 +24,7 @@ export interface CreateNewsPayload {
   imageUrl?: string;
 }
 
-export const createNews = async (payload: CreateNewsPayload, token: string): Promise<{ message: string }> => {
+export const createNews = async (payload: CreateNewsPayload, token: string): Promise<CardData> => {
   const res = await fetch(`${API_URL}/news`, {
     method: 'POST',
     headers: {
@@ -37,7 +37,7 @@ export const createNews = async (payload: CreateNewsPayload, token: string): Pro
   const data = await res.json();
   if (!res.ok) throw new Error(data.message || 'Ошибка добавления новости');
 
-  return data;
+  return data; // теперь возвращаем саму новость
 };
 
 export const deleteNews = async (id: number, token: string) => {

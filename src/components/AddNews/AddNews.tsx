@@ -1,8 +1,12 @@
 import { useState } from 'react';
-import { createNews } from '../../api/news';
+import { createNews, type CardData } from '../../api/news';
 import styles from './AddNews.module.css';
 
-export default function AddNews() {
+type AddNewsProps = {
+  onAddNews: (news: CardData) => void;
+};
+
+export default function AddNews({ onAddNews }: AddNewsProps) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
@@ -22,7 +26,7 @@ export default function AddNews() {
     }
 
     try {
-      await createNews(
+      const newNews = await createNews(
         {
           title,
           description,
@@ -31,6 +35,8 @@ export default function AddNews() {
         },
         token
       );
+
+      onAddNews(newNews); // сразу добавляем новость в список на странице
 
       setSuccess('Новость добавлена!');
       setTitle('');

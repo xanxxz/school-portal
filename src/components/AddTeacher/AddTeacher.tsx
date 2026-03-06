@@ -1,8 +1,12 @@
 import { useState } from 'react';
-import { createTeacher } from '../../api/teachers';
+import { createTeacher, type TeacherData } from '../../api/teachers';
 import styles from './AddTeacher.module.css';
 
-export default function AddTeacher() {
+interface AddTeacherProps {
+  onAddTeacher: (teacher: TeacherData) => void;
+}
+
+export default function AddTeacher({ onAddTeacher }: AddTeacherProps) {
   const [name, setName] = useState('');
   const [position, setPosition] = useState('');
   const [bio, setBio] = useState('');
@@ -23,7 +27,7 @@ export default function AddTeacher() {
     }
 
     try {
-      await createTeacher(
+      const newTeacher = await createTeacher(
         {
           name,
           position,
@@ -34,6 +38,7 @@ export default function AddTeacher() {
         token
       );
 
+      onAddTeacher(newTeacher); // сразу добавляем в список
       setSuccess('Преподаватель добавлен!');
       setName('');
       setPosition('');
@@ -49,37 +54,11 @@ export default function AddTeacher() {
     <div className={styles.addTeacherWrapper}>
       <h2>Добавить преподавателя</h2>
       <form onSubmit={handleSubmit} className={styles.addTeacherForm}>
-        <input
-          type="text"
-          placeholder="Имя"
-          value={name}
-          onChange={e => setName(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Должность"
-          value={position}
-          onChange={e => setPosition(e.target.value)}
-          required
-        />
-        <textarea
-          placeholder="Биография"
-          value={bio}
-          onChange={e => setBio(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Ссылка на фото"
-          value={photoUrl}
-          onChange={e => setPhotoUrl(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Предметы через запятую"
-          value={subjects}
-          onChange={e => setSubjects(e.target.value)}
-        />
+        <input type="text" placeholder="Имя" value={name} onChange={e => setName(e.target.value)} required />
+        <input type="text" placeholder="Должность" value={position} onChange={e => setPosition(e.target.value)} required />
+        <textarea placeholder="Биография" value={bio} onChange={e => setBio(e.target.value)} />
+        <input type="text" placeholder="Ссылка на фото" value={photoUrl} onChange={e => setPhotoUrl(e.target.value)} />
+        <input type="text" placeholder="Предметы через запятую" value={subjects} onChange={e => setSubjects(e.target.value)} />
         <button type="submit">Добавить преподавателя</button>
         {error && <p className={styles.error}>{error}</p>}
         {success && <p className={styles.success}>{success}</p>}

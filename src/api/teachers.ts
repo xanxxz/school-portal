@@ -29,7 +29,7 @@ export interface TeacherPayload {
 export const createTeacher = async (
   payload: TeacherPayload,
   token: string
-): Promise<{ message: string }> => {
+): Promise<TeacherData> => {
   const res = await fetch(`${API_URL}/teachers`, {
     method: 'POST',
     headers: {
@@ -42,7 +42,7 @@ export const createTeacher = async (
   const data = await res.json();
   if (!res.ok) throw new Error(data.message || 'Ошибка добавления преподавателя');
 
-  return data;
+  return data; // возвращаем объект преподавателя
 };
 
 export const deleteTeacher = async (id: number, token: string) => {
