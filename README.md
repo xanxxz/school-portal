@@ -1,73 +1,140 @@
-# React + TypeScript + Vite
+# School Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Описание проекта
 
-Currently, two official plugins are available:
+**School Portal** — это веб-приложение для управления школьной информационной системой, разработанное на React с использованием TypeScript и Vite.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Платформа предназначена для организации учебного процесса: отображения расписания, управления курсами, взаимодействия учеников и преподавателей, а также подготовки к расширению функционала (оценки, задания, уведомления).
 
-## React Compiler
+Проект реализован как современный frontend SPA с акцентом на скорость, масштабируемость и чистую архитектуру компонентов.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Назначение проекта
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Основная цель проекта — создать удобный и расширяемый школьный портал, который может использоваться как основа для образовательной системы.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+В рамках проекта реализуются:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+* интерфейс школьного портала
+* управление учебными данными
+* отображение расписания и курсов
+* структура для личных кабинетов пользователей
+* подготовка под систему ролей (ученик / преподаватель / админ)
+* база для будущей интеграции с backend API
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## Стек технологий
+
+### Основные технологии
+
+* React
+* TypeScript
+* Vite
+
+### UI и архитектура
+
+* компонентный подход
+* модульная структура проекта
+* адаптивная верстка
+* ESLint для качества кода
+
+### Инструменты разработки
+
+* npm
+* Git
+* GitHub
+* VS Code
+
+---
+
+## Скрипты проекта
+
+```json id="p9k2aa"
+"scripts": {
+  "dev": "vite",
+  "build": "tsc -b && vite build",
+  "lint": "eslint .",
+  "preview": "vite preview"
+}
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Описание скриптов
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Запуск в режиме разработки
+
+```bash id="1v8m3n"
+npm run dev
 ```
+
+Запускает локальный dev-сервер с горячей перезагрузкой через Vite.
+
+---
+
+### Сборка проекта
+
+```bash id="q7s0dd"
+npm run build
+```
+
+Выполняет TypeScript проверку и собирает production-версию приложения.
+
+---
+
+### Проверка кода
+
+```bash id="z0xk2p"
+npm run lint
+```
+
+Запускает ESLint для анализа качества кода и выявления ошибок.
+
+---
+
+### Предпросмотр сборки
+
+```bash id="c4n8vv"
+npm run preview
+```
+
+Позволяет локально запустить production-сборку для проверки перед деплоем.
+
+---
+
+## Архитектура проекта
+
+Проект построен с акцентом на:
+
+* переиспользуемые UI-компоненты
+* разделение логики и представления
+* масштабируемую структуру страниц
+* подготовку под маршрутизацию (React Router или аналог)
+* расширение до полноценной школьной платформы
+
+---
+
+## Основные возможности (MVP)
+
+* базовая структура школьного портала
+* навигация между разделами
+* отображение учебной информации
+* подготовка интерфейсов под роли пользователей
+* адаптивный UI для разных устройств
+
+---
+
+## Статус проекта
+
+**MVP / Frontend часть школьной платформы**
+
+Проект находится в стадии развития и может быть расширен:
+
+* авторизация пользователей
+* роли (ученик / учитель / админ)
+* оценки и домашние задания
+* уведомления
+* интеграция с backend API
+* расширенная аналитика успеваемости
